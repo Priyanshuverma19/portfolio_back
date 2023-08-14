@@ -8,7 +8,14 @@ config({
 })
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+{
+    origin:process.env.FRONTEND_URL,
+    credentials:true,
+    methods:["GET","POST","DELETE","PUT"],
+}
+    
+));
 app.use(express.urlencoded({extended: true}));
 
 import form from "./routes/formroute.js"
